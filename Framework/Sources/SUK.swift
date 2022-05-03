@@ -127,15 +127,16 @@ public class SUK {
                 return
             }
 
-            let url = URL(string: config.storeURL ?? "")
-            logf(url.absoluteString, log)
-            #if os(OSX)
-            NSWorkspace.shared.open(url)
-            #elseif os(iOS)
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url)
+            if let url = URL(string: config.storeURL  ?? "" ) {
+                logf(url.absoluteString, log)
+                #if os(OSX)
+                NSWorkspace.shared.open(url)
+                #elseif os(iOS)
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url)
+                }
+                #endif
             }
-            #endif
         }
     }
 
