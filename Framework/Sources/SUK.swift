@@ -127,7 +127,7 @@ public class SUK {
                 return
             }
 
-            let url = URL(string: config.storeURL)!
+            let url = URL(string: config.storeURL ?? "")
             logf(url.absoluteString, log)
             #if os(OSX)
             NSWorkspace.shared.open(url)
